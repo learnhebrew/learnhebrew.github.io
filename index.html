@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hebrew Class</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.3rem;
+      margin-top: 2rem;
+    }
+    .clip {
+      margin: 1rem 0;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    audio {
+      display: block;
+      margin-top: 0.5rem;
+      width: 100%;
+    }
+    .caption {
+      font-size: 0.95rem;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>Class Audio Clips</h1>
+  <div id="audio-list">Loading...</div>
+
+  <script>
+    // Change this to your GitHub username + repo name
+    const username = "learnhebrew";
+    const repo = "learnhebrew.github.io";
+
+    async function loadAudio() {
+      const res = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/`);
+      const files = await res.json();
+
+      const audioList = document.getElementById("audio-list");
+      audioList.innerHTML = "";
+
+      // Filter only audio files and sort by name (so 01_..., 02_...)
+      const audioFiles = files
+        .filter(file => file.name.match(/\.(mp3|wav|ogg|mp4)$/i))
+        .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+
+      // Group by week
+      const weeks = {};
+      audioFiles.forEach(file => {
+        const match = file.name.match(/^(\d+)[-_](.+)\.(mp3|wav|ogg|mp4)$/i);
+        if (match) {
+          const weekNum = parseInt(match[1], 10);
+          const caption = match[2].replace(/_/g, " ");
+          if (!weeks[weekNum]) weeks[weekNum] = [];
+          weeks[weekNum].push({ url: file.download_url, caption });
+        }
+      });
+
+      // Render weeks in order
+      Object.keys(weeks).sort((a, b) => a - b).forEach(weekNum => {
+        const section = document.createElement("section");
+        const heading = document.createElement("h2");
+        heading.textContent = `Week ${weekNum}`;
+        section.appendChild(heading);
+
+        weeks[weekNum].forEach(clip => {
+          const div = document.createElement("div");
+          div.className = "clip";
+
+          const caption = document.createElement("div");
+          caption.className = "caption";
+          caption.textContent = clip.caption;
+
+          const audio = document.createElement("audio");
+          audio.controls = true;
+          audio.src = clip.url;
+
+          div.appendChild(caption);
+          div.appendChild(audio);
+          section.appendChild(div);
+        });
+
+        audioList.appendChild(section);
+      });
+    }
+
+    loadAudio();
+  </script>
+</body>
+</html>
