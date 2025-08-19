@@ -7,24 +7,24 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 700px;
+      max-width: 800px;
       margin: 2rem auto;
       padding: 1rem;
-      line-height: 1.6;
-      font-size: 1.1rem; /* ✅ base font a bit larger */
+      line-height: 1.7;
+      font-size: 1.3rem; /* ✅ larger base font for desktop */
     }
     section {
       margin-bottom: 3rem;
     }
     h1 {
       text-align: center;
-      font-size: 1.8rem; /* ✅ bigger heading */
+      font-size: 2.4rem; /* ✅ larger main heading */
     }
     h2 {
       border-bottom: 2px solid #ccc;
       padding-bottom: 0.3rem;
       margin-top: 2rem;
-      font-size: 1.4rem; /* ✅ bigger subheading */
+      font-size: 1.8rem; /* ✅ larger subheading */
     }
     .clip {
       margin: 1rem 0;
@@ -39,18 +39,18 @@
       width: 100%;
     }
     .caption {
-      font-size: 1.2rem; /* ✅ captions larger */
+      font-size: 1.5rem; /* ✅ larger captions */
       color: #222;
     }
     #reload {
       display: block;
       margin: 1rem auto;
-      padding: 0.6rem 1.2rem;
+      padding: 0.8rem 1.5rem;
       border: none;
       border-radius: 6px;
       background: #007acc;
       color: white;
-      font-size: 1.1rem; /* ✅ button text bigger */
+      font-size: 1.3rem; /* ✅ larger button */
       cursor: pointer;
     }
     #reload:disabled {
@@ -58,13 +58,23 @@
       cursor: not-allowed;
     }
 
-    /* ✅ extra boost for very small screens */
+    /* Mobile adjustments */
     @media (max-width: 480px) {
       body {
         font-size: 1.2rem;
       }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
       .caption {
         font-size: 1.3rem;
+      }
+      #reload {
+        font-size: 1.2rem;
+        padding: 0.6rem 1.2rem;
       }
     }
   </style>
