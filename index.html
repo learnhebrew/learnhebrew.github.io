@@ -22,6 +22,19 @@
       padding-bottom: 0.3rem;
       margin-top: 2rem;
     }
+    #reload {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #f5f5f5;
+    }
+    #reload:hover {
+      background: #e9e9e9;
+    }
     .clip {
       margin: 1rem 0;
       padding: 1rem;
@@ -41,16 +54,18 @@
   </style>
 </head>
 <body>
-  <h1>希伯來文課程</h1>
+  <h1>עברתי</h1>
+  <button id="reload">Reload Audio List</button>
   <div id="audio-list">Loading...</div>
 
   <script>
     // Change this to your GitHub username + repo name
     const username = "learnhebrew";
     const repo = "learnhebrew.github.io";
+    let lastReload = 0;
 
     async function loadAudio() {
-      const res = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/`);
+      const res = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/?t=${Date.now()}`);
       const files = await res.json();
 
       const audioList = document.getElementById("audio-list");
@@ -64,10 +79,11 @@
       // Group by week
       const weeks = {};
       audioFiles.forEach(file => {
+        // Match filenames like 01_text1_text2.mp3
         const match = file.name.match(/^(\d+)[-_](.+)\.(mp3|wav|ogg|mp4)$/i);
         if (match) {
           const weekNum = parseInt(match[1], 10);
-          const caption = match[2].replace(/_/g, " ");
+          const caption = match[2].replace(/_/g, " "); // replace underscores with spaces
           if (!weeks[weekNum]) weeks[weekNum] = [];
           weeks[weekNum].push({ url: file.download_url, caption });
         }
@@ -101,6 +117,17 @@
       });
     }
 
+    document.getElementById("reload").addEventListener("click", () => {
+      const now = Date.now();
+      if (now - lastReload < 30000) { // 30 sec cooldown
+        alert("Please wait a little before refreshing again.");
+        return;
+      }
+      lastReload = now;
+      loadAudio();
+    });
+
+    // Load once on page open
     loadAudio();
   </script>
 </body>
