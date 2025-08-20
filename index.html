@@ -58,7 +58,26 @@
       cursor: not-allowed;
     }
 
-    /* Mobile adjustments */
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 1.1rem;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.6rem;
+      text-align: center;
+    }
+    th {
+      background: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    /* Responsive adjustments */
     @media (max-width: 480px) {
       body {
         font-size: 1.2rem;
@@ -76,11 +95,20 @@
         font-size: 1.2rem;
         padding: 0.6rem 1.2rem;
       }
+      table {
+        font-size: 1rem;
+      }
+      th, td {
+        padding: 0.4rem;
+      }
     }
   </style>
 </head>
 <body>
   <h1>עברית</h1>
+  <!-- ✅ Syllabus Table goes here -->
+  <div id="syllabus">Loading syllabus...</div>
+
   <button id="reload">Reload Audio List</button>
   <div id="audio-list">Loading...</div>
 
@@ -90,6 +118,50 @@
 
     let lastReload = 0;
 
+    // ✅ Load syllabus.csv and display as table
+    async function loadSyllabus() {
+      try {
+        const res = await fetch(`https://raw.githubusercontent.com/${username}/${repo}/main/syllabus.csv?t=${Date.now()}`);
+        const text = await res.text();
+
+        const rows = text.trim().split(/\r?\n/).map(line => line.split(","));
+        const syllabusDiv = document.getElementById("syllabus");
+
+        const table = document.createElement("table");
+        const thead = document.createElement("thead");
+        const tbody = document.createElement("tbody");
+
+        // Header
+        const headerRow = document.createElement("tr");
+        rows[0].forEach(h => {
+          const th = document.createElement("th");
+          th.textContent = h.trim();
+          headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+
+        // Body
+        rows.slice(1).forEach(r => {
+          const tr = document.createElement("tr");
+          r.forEach(c => {
+            const td = document.createElement("td");
+            td.textContent = c.trim();
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        syllabusDiv.innerHTML = "";
+        syllabusDiv.appendChild(table);
+      } catch (err) {
+        document.getElementById("syllabus").textContent = "Failed to load syllabus.csv";
+        console.error(err);
+      }
+    }
+
+    // ✅ Load audio list
     async function loadAudio() {
       const res = await fetch(`https://api.github.com/repos/${username}/${repo}/contents/?t=${Date.now()}`);
       const files = await res.json();
@@ -150,6 +222,7 @@
       loadAudio();
     });
 
+    loadSyllabus();
     loadAudio();
   </script>
 </body>
