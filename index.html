@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>עברית</title>
+<style>
+  :root {
+    --ink: #1c1c1c;
+    --muted: #666;
+    --line: #ddd;
+    --accent: #0a66a0;
+    --bg: #ffffff;
+    --row-alt: #f7f7f5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, "Noto Sans Hebrew", "Noto Sans TC", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1rem;
+    line-height: 1.5;
+  }
+  h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin: 1rem 0 0.2rem;
+  }
+  .built {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  .speed {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  .speed button {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 0.95rem;
+    padding: 0.25rem 0.8rem;
+    cursor: pointer;
+  }
+  .speed button.on {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  h2 {
+    font-size: 1.25rem;
+    border-bottom: 2px solid var(--line);
+    padding-bottom: 0.3rem;
+    margin: 2.2rem 0 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  h2 .date {
+    font-weight: normal;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.55rem 0.6rem;
+    border-radius: 6px;
+  }
+  .row:nth-child(even) { background: var(--row-alt); }
+  .zh {
+    font-size: 1.1rem;
+    color: var(--muted);
+    text-align: left;
+  }
+  .he {
+    font-size: 1.6rem;
+    flex: 1;
+    direction: rtl;
+    text-align: right;
+  }
+  button.play {
+    flex: none;
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--accent);
+    font-size: 1.1rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+  button.play:hover, button.play:focus-visible { border-color: var(--accent); }
+  button.play.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  @media (max-width: 480px) {
+    .he { font-size: 1.4rem; }
+    .zh { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+<h1>עברית</h1>
+<div class="built">updated 2026-07-07</div>
+<div class="speed" id="speed">
+  <span>Speed</span>
+  <button data-rate="0.5">0.5&times;</button>
+  <button data-rate="0.75">0.75&times;</button>
+  <button data-rate="1" class="on">1&times;</button>
+</div>
+<section><h2>Lesson 0<span class="date">8/17/2025</span></h2>
+<div class="row"><button class="play" data-src="audio/7efa9cf09641.mp3" aria-label="Play אני">▶</button><div class="zh" lang="zh-Hant">我</div><div class="he" lang="he">אני</div></div>
+<div class="row"><button class="play" data-src="audio/99d168184fe8.mp3" aria-label="Play אתה">▶</button><div class="zh" lang="zh-Hant">你</div><div class="he" lang="he">אתה</div></div>
+<div class="row"><button class="play" data-src="audio/ee47bc9cdbbd.mp3" aria-label="Play את">▶</button><div class="zh" lang="zh-Hant">妳</div><div class="he" lang="he">את</div></div>
+<div class="row"><button class="play" data-src="audio/0d7b013a70a1.mp3" aria-label="Play פנוי">▶</button><div class="zh" lang="zh-Hant">有空 (m.)</div><div class="he" lang="he">פנוי</div></div>
+<div class="row"><button class="play" data-src="audio/0276eac2d249.mp3" aria-label="Play פנויה">▶</button><div class="zh" lang="zh-Hant">有空 (f.)</div><div class="he" lang="he">פנויה</div></div>
+<div class="row"><button class="play" data-src="audio/9e4a90a09b7b.mp3" aria-label="Play שלום">▶</button><div class="zh" lang="zh-Hant">平安</div><div class="he" lang="he">שלום</div></div>
+</section>
+<section><h2>Lesson 1<span class="date">8/31/2025</span></h2>
+<div class="row"><button class="play" data-src="audio/e194bcc5df38.mp3" aria-label="Play א">▶</button><div class="zh" lang="zh-Hant">aleph</div><div class="he" lang="he">א</div></div>
+<div class="row"><button class="play" data-src="audio/23c1e0bab8a1.mp3" aria-label="Play ב">▶</button><div class="zh" lang="zh-Hant">bet</div><div class="he" lang="he">ב</div></div>
+<div class="row"><button class="play" data-src="audio/e89d5099163d.mp3" aria-label="Play ג">▶</button><div class="zh" lang="zh-Hant">gimmel</div><div class="he" lang="he">ג</div></div>
+<div class="row"><button class="play" data-src="audio/8aea2ff5d4ec.mp3" aria-label="Play ד">▶</button><div class="zh" lang="zh-Hant">dalet</div><div class="he" lang="he">ד</div></div>
+<div class="row"><button class="play" data-src="audio/cf3fdd9b7e73.mp3" aria-label="Play ה">▶</button><div class="zh" lang="zh-Hant">hey</div><div class="he" lang="he">ה</div></div>
+</section>
+<section><h2>Lesson 2<span class="date">9/14/2025</span></h2>
+<div class="row"><button class="play" data-src="audio/a9377a66d97e.mp3" aria-label="Play אוכל">▶</button><div class="zh" lang="zh-Hant">食物</div><div class="he" lang="he">אוכל</div></div>
+<div class="row"><button class="play" data-src="audio/dda9882b2517.mp3" aria-label="Play בית">▶</button><div class="zh" lang="zh-Hant">家</div><div class="he" lang="he">בית</div></div>
+<div class="row"><button class="play" data-src="audio/f455d6699e67.mp3" aria-label="Play גמל גדול">▶</button><div class="zh" lang="zh-Hant">大駱駝</div><div class="he" lang="he">גמל גדול</div></div>
+<div class="row"><button class="play" data-src="audio/66cac1484991.mp3" aria-label="Play ז">▶</button><div class="zh" lang="zh-Hant">zayin</div><div class="he" lang="he">ז</div></div>
+<div class="row"><button class="play" data-src="audio/cf3fdd9b7e73.mp3" aria-label="Play ה">▶</button><div class="zh" lang="zh-Hant">hey</div><div class="he" lang="he">ה</div></div>
+<div class="row"><button class="play" data-src="audio/8ccf3c9fb630.mp3" aria-label="Play ו">▶</button><div class="zh" lang="zh-Hant">vav</div><div class="he" lang="he">ו</div></div>
+<div class="row"><button class="play" data-src="audio/66cac1484991.mp3" aria-label="Play ז">▶</button><div class="zh" lang="zh-Hant">zayin</div><div class="he" lang="he">ז</div></div>
+<div class="row"><button class="play" data-src="audio/083792c4f32e.mp3" aria-label="Play ח">▶</button><div class="zh" lang="zh-Hant">chet</div><div class="he" lang="he">ח</div></div>
+<div class="row"><button class="play" data-src="audio/26fbb23f206e.mp3" aria-label="Play ט">▶</button><div class="zh" lang="zh-Hant">tet</div><div class="he" lang="he">ט</div></div>
+<div class="row"><button class="play" data-src="audio/513fca188caf.mp3" aria-label="Play י">▶</button><div class="zh" lang="zh-Hant">yod</div><div class="he" lang="he">י</div></div>
+</section>
+<section><h2>Lesson 3<span class="date">10/5/2025</span></h2>
+<div class="row"><button class="play" data-src="audio/d229c8b7d635.mp3" aria-label="Play מה העניינים">▶</button><div class="zh" lang="zh-Hant">你好嗎</div><div class="he" lang="he">מה העניינים</div></div>
+<div class="row"><button class="play" data-src="audio/d61a90788b2e.mp3" aria-label="Play לילה טוב">▶</button><div class="zh" lang="zh-Hant">晚安</div><div class="he" lang="he">לילה טוב</div></div>
+<div class="row"><button class="play" data-src="audio/63b86ef09fa3.mp3" aria-label="Play בוקר טוב">▶</button><div class="zh" lang="zh-Hant">早安</div><div class="he" lang="he">בוקר טוב</div></div>
+<div class="row"><button class="play" data-src="audio/926d8abed807.mp3" aria-label="Play כ">▶</button><div class="zh" lang="zh-Hant">kaf</div><div class="he" lang="he">כ</div></div>
+<div class="row"><button class="play" data-src="audio/62b73a6002f0.mp3" aria-label="Play ך">▶</button><div class="zh" lang="zh-Hant">kaf sofit</div><div class="he" lang="he">ך</div></div>
+<div class="row"><button class="play" data-src="audio/d67cdc0f401f.mp3" aria-label="Play ל">▶</button><div class="zh" lang="zh-Hant">lamed</div><div class="he" lang="he">ל</div></div>
+<div class="row"><button class="play" data-src="audio/f29f753fc239.mp3" aria-label="Play מ">▶</button><div class="zh" lang="zh-Hant">mem</div><div class="he" lang="he">מ</div></div>
+<div class="row"><button class="play" data-src="audio/c1583b473b00.mp3" aria-label="Play ם">▶</button><div class="zh" lang="zh-Hant">mem sofit</div><div class="he" lang="he">ם</div></div>
+<div class="row"><button class="play" data-src="audio/c223f5f2218f.mp3" aria-label="Play נ">▶</button><div class="zh" lang="zh-Hant">nun</div><div class="he" lang="he">נ</div></div>
+<div class="row"><button class="play" data-src="audio/c4d8152c7b8f.mp3" aria-label="Play ן">▶</button><div class="zh" lang="zh-Hant">nun sofit</div><div class="he" lang="he">ן</div></div>
+<div class="row"><button class="play" data-src="audio/cba00c806851.mp3" aria-label="Play ס">▶</button><div class="zh" lang="zh-Hant">samech</div><div class="he" lang="he">ס</div></div>
+</section>
+<section><h2>Lesson 4<span class="date">11/2/2025</span></h2>
+<div class="row"><button class="play" data-src="audio/149465bff368.mp3" aria-label="Play תהנה תהני תהנו">▶</button><div class="zh" lang="zh-Hant">享受</div><div class="he" lang="he">תהנה תהני תהנו</div></div>
+<div class="row"><button class="play" data-src="audio/4175f994b606.mp3" aria-label="Play כן">▶</button><div class="zh" lang="zh-Hant">是</div><div class="he" lang="he">כן</div></div>
+<div class="row"><button class="play" data-src="audio/c16224bb83f6.mp3" aria-label="Play אולי">▶</button><div class="zh" lang="zh-Hant">也許</div><div class="he" lang="he">אולי</div></div>
+<div class="row"><button class="play" data-src="audio/21a2d9d60e13.mp3" aria-label="Play לא">▶</button><div class="zh" lang="zh-Hant">不是</div><div class="he" lang="he">לא</div></div>
+<div class="row"><button class="play" data-src="audio/79c758140c19.mp3" aria-label="Play באמת">▶</button><div class="zh" lang="zh-Hant">真的嗎</div><div class="he" lang="he">באמת</div></div>
+</section>
+<section><h2>Lesson 5<span class="date">12/28/2025</span></h2>
+<div class="row"><button class="play" data-src="audio/8dba2c31b0c4.mp3" aria-label="Play בסדר גמור">▶</button><div class="zh" lang="zh-Hant">很好</div><div class="he" lang="he">בסדר גמור</div></div>
+<div class="row"><button class="play" data-src="audio/27e2c103d05c.mp3" aria-label="Play חג חנוכה שָׂמֵחַ">▶</button><div class="zh" lang="zh-Hant">光明節快樂</div><div class="he" lang="he">חג חנוכה שָׂמֵחַ</div></div>
+</section>
+<section><h2>Lesson 6<span class="date">3/8/2026</span></h2>
+<div class="row"><button class="play" data-src="audio/de0e11ba591f.mp3" aria-label="Play אני רוצה קפה">▶</button><div class="zh" lang="zh-Hant">我想喝咖啡</div><div class="he" lang="he">אני רוצה קפה</div></div>
+<div class="row"><button class="play" data-src="audio/0ff5484e539c.mp3" aria-label="Play אני אוהב אותך">▶</button><div class="zh" lang="zh-Hant">我愛你</div><div class="he" lang="he">אני אוהב אותך</div></div>
+</section>
+<section><h2>Lesson 7<span class="date">6/21/2026</span></h2>
+<div class="row"><button class="play" data-src="audio/48a67171f8de.mp3" aria-label="Play אני הוא לחם החיים">▶</button><div class="zh" lang="zh-Hant">我就是生命的糧</div><div class="he" lang="he">אני הוא לחם החיים</div></div>
+<div class="row"><button class="play" data-src="audio/b5699c31c628.mp3" aria-label="Play אני הדרך והאמת והחיים">▶</button><div class="zh" lang="zh-Hant">我是道路、真理、生命</div><div class="he" lang="he">אני הדרך והאמת והחיים</div></div>
+<div class="row"><button class="play" data-src="audio/644a7b2794d4.mp3" aria-label="Play אני רוצה לחם">▶</button><div class="zh" lang="zh-Hant">我想要麵包</div><div class="he" lang="he">אני רוצה לחם</div></div>
+</section>
+<section><h2>Lesson 8<span class="date">6/28/2026</span></h2>
+<div class="row"><button class="play" data-src="audio/41df2ddc4198.mp3" aria-label="Play אני צריך מים">▶</button><div class="zh" lang="zh-Hant">我需要水</div><div class="he" lang="he">אני צריך מים</div></div>
+<div class="row"><button class="play" data-src="audio/49a07b98442b.mp3" aria-label="Play אני צריך רופא">▶</button><div class="zh" lang="zh-Hant">我需要醫生</div><div class="he" lang="he">אני צריך רופא</div></div>
+<div class="row"><button class="play" data-src="audio/83b123b289e6.mp3" aria-label="Play אתה צריך רופא">▶</button><div class="zh" lang="zh-Hant">你需要醫生</div><div class="he" lang="he">אתה צריך רופא</div></div>
+</section>
+<section><h2>Lesson 9<span class="date">7/5/2026</span></h2>
+<div class="row"><button class="play" data-src="audio/ac1d54b1003a.mp3" aria-label="Play אני מאמין בְּיֵשׁוּעַ">▶</button><div class="zh" lang="zh-Hant">我相信耶穌</div><div class="he" lang="he">אני מאמין בְּיֵשׁוּעַ</div></div>
+<div class="row"><button class="play" data-src="audio/fa4ff67bbc80.mp3" aria-label="Play אני מאמינה בְּיֵשׁוּעַ">▶</button><div class="zh" lang="zh-Hant">我 (f.) 相信耶穌</div><div class="he" lang="he">אני מאמינה בְּיֵשׁוּעַ</div></div>
+</section>
+<script>
+(function () {
+  var cur = null, curBtn = null, rate = 1;
+  function reset() {
+    if (curBtn) { curBtn.classList.remove('on'); curBtn.textContent = '\u25B6'; }
+    cur = null; curBtn = null;
+  }
+  document.getElementById('speed').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-rate]');
+    if (!b) return;
+    rate = parseFloat(b.getAttribute('data-rate'));
+    var btns = this.querySelectorAll('button');
+    for (var i = 0; i < btns.length; i++) btns[i].classList.remove('on');
+    b.classList.add('on');
+    if (cur) cur.playbackRate = rate;   /* applies to the clip already playing too */
+  });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('button.play');
+    if (!b) return;
+    if (b === curBtn) { cur.pause(); reset(); return; }
+    if (cur) { cur.pause(); reset(); }
+    cur = new Audio(b.getAttribute('data-src'));
+    cur.playbackRate = rate;
+    curBtn = b;
+    b.classList.add('on');
+    b.textContent = '\u25A0';
+    cur.onended = reset;
+    cur.onerror = reset;
+    cur.play();
+  });
+})();
+</script>
+</body>
+</html>
